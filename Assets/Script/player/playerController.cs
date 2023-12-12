@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class playerController : MonoBehaviour
@@ -29,5 +30,6 @@ public class playerController : MonoBehaviour
         vertVel = vertical * speed;
         rigidbody.velocity = new Vector3(horVel, vertVel, 0);
     }
+
 
 }
