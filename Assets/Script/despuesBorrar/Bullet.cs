@@ -6,24 +6,31 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 5;
+    //[SerializeField] float moveSpeed = 5;
     [SerializeField] float timeTillDespawn = 2;
+    [SerializeField] ParticleSystem shot;
 
+    private void Awake()
+    {
+        shot = GetComponent<ParticleSystem>();
+    }
     // Start is called before the first frame update
     void Start()
     {
+        ToMove();
         Destroy(gameObject, timeTillDespawn);
     }
 
     // Update is called once per frame
     void Update()
     {
-        ToMove();
+        //ToMove();
     }
 
     void ToMove()
     {
-        transform.position += transform.right * Time.deltaTime * moveSpeed;
+        shot.Play();
+        //transform.position += transform.right * Time.deltaTime * moveSpeed;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

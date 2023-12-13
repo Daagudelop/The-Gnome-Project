@@ -31,5 +31,6 @@ public class playerController : MonoBehaviour
         rigidbody.velocity = new Vector3(horVel, vertVel, 0);
     }
 
+    
 
 }

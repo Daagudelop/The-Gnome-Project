@@ -16,7 +16,7 @@ public class shooting : MonoBehaviour
     void Update()
     {
         aiming();
-        Debug.Log(mousePos);
+        //Debug.Log(mousePos);
     }
 
     void aiming()

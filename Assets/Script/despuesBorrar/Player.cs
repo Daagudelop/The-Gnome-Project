@@ -65,8 +65,8 @@ public class Player : MonoBehaviour
     {        
             //ToMove(moveSpeed);
             Aim();
-            //ToShoot();
-            ShotgunShoot();
+            ToShoot();
+            //ShotgunShoot();
             //GoToMap();
             //Jump();
     }
@@ -94,6 +94,19 @@ public class Player : MonoBehaviour
         actionGoMapNeg = Input.GetButton("Fire2");
     }
 
+    void ToShoot1()
+    {
+        //  Si click izq 
+        if (Input.GetMouseButton(0) && gunLoaded)
+        {   
+            gunLoaded = false;
+            float angle = Mathf.Atan2(facingDirection.y, facingDirection.x) * Mathf.Rad2Deg;
+            Quaternion BulletDirection = Quaternion.AngleAxis(angle, Vector3.up);
+            Instantiate(BulletPrefab, transform.position, BulletDirection);
+            StartCoroutine(ReloadGun());
+        }
+    }
+
     void ToShoot()
     {
         //  Si click izq 
@@ -101,8 +114,10 @@ public class Player : MonoBehaviour
         {
             gunLoaded = false;
             float angle = Mathf.Atan2(facingDirection.y, facingDirection.x) * Mathf.Rad2Deg;
-            Quaternion BulletDirection = Quaternion.AngleAxis(angle, Vector3.forward);
+            Quaternion BulletDirection = Quaternion.Euler(-angle,90,0);
             Instantiate(BulletPrefab, transform.position, BulletDirection);
+            
+
             StartCoroutine(ReloadGun());
         }
     }

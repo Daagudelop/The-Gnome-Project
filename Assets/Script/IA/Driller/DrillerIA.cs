@@ -5,6 +5,9 @@ using UnityEngine.AI;
 
 public class DrillerIA : MonoBehaviour
 {
+
+    [SerializeField] Stats DrillerStats;
+
     [SerializeField] Transform target;
 
     [SerializeField] NavMeshAgent agent;
