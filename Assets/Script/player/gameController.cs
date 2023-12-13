@@ -9,7 +9,7 @@ public class gameController : MonoBehaviour
     public static gameController instance;
     //static stats
     private static int maxHealth = 6;
-    private static float moveSpeed = 30f;
+    private static float moveSpeed = 10f;
     private static float fireRate = 0.6f;
     //variable stats
     private static int health = 6;

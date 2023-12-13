@@ -6,6 +6,7 @@ public class shooting : MonoBehaviour
 {
     private Camera mainCam;
     private Vector3 mousePos;
+    public float rotZ;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,14 +17,18 @@ public class shooting : MonoBehaviour
     void Update()
     {
         aiming();
-        //Debug.Log(mousePos);
     }
 
     void aiming()
     {
         mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
         Vector3 rotation = mousePos - transform.position;
-        float rotZ = Mathf.Atan2(rotation.y, rotation.x)* Mathf.Rad2Deg;
+        rotZ = Mathf.Atan2(rotation.y, rotation.x)* Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rotZ);
+    }
+
+    void weapons()
+    {
+
     }
 }
