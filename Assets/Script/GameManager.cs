@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState
+public enum GameStates
 {
     menu,
     inGame,
@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public static GameManager sharedInstanceManager;
 
     //establecera el estado en el que este el juego actualmente
-    public GameState currentGameState = GameState.menu;
+    public GameStates currentGameState = GameStates.menu;
 
     private void Awake()
     {
@@ -26,31 +26,31 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        setGameState(GameState.inGame);
+        setGameState(GameStates.inGame);
     }
 
     public void BackToMenu()
     {
-        setGameState(GameState.menu);
+        setGameState(GameStates.menu);
     }
 
 
     public void GameOver()
     {
-        setGameState(GameState.gameOver);
+        setGameState(GameStates.gameOver);
     }
 
-    private void setGameState(GameState newGameState)
+    private void setGameState(GameStates newGameState)
     {
-        if (newGameState == GameState.menu)
+        if (newGameState == GameStates.menu)
         {
             //TODO: colocar la lógica del menu
         }
-        else if (newGameState == GameState.inGame)
+        else if (newGameState == GameStates.inGame)
         {
             //TODO: colocar la lógica del ingame
         }
-        else if (newGameState == GameState.gameOver)
+        else if (newGameState == GameStates.gameOver)
         {
             //TODO: colocar la lógica del GameOver
         }

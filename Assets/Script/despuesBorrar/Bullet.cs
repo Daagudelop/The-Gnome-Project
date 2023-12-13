@@ -7,6 +7,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     //[SerializeField] float moveSpeed = 5;
+    int Damage;
     [SerializeField] float timeTillDespawn = 2;
     [SerializeField] ParticleSystem shot;
 

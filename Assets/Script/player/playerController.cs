@@ -10,7 +10,6 @@ public class playerController : MonoBehaviour
     private new Rigidbody2D rigidbody;
     private float horVel;
     private float vertVel;
-    public GameObject bulletPrefab;
     public Animator playerMovement;
     GameObject Aim;
     // Start is called before the first frame update
@@ -36,7 +35,7 @@ public class playerController : MonoBehaviour
         vertVel = vertical * speed;
         rigidbody.velocity = new Vector3(horVel, vertVel, 0);
 
-        float aimVar = Aim.GetComponent<shooting>().rotZ;
+        float aimVar = Aim.GetComponent<Weapon>().rotZ;
         if (aimVar >= -45f && aimVar < 45f)
         {
             if (horVel != 0 || vertVel != 0)
