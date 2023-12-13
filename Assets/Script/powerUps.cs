@@ -12,7 +12,7 @@ public class Item
 public class powerUps : MonoBehaviour
 {
     public Item item;
-    //player
+    //player powerup variables
     public int addToMaxHealth, addToMaxDashes, addToFireRate, addToMaxAmmo, addToWeaponDamage; // New
     public float addToMoveSpeed;  // New
 
