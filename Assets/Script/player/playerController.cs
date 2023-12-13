@@ -7,8 +7,6 @@ using UnityEngine.Animations;
 public class playerController : MonoBehaviour
 {
     private float speed;
-    private int maxDashes = 2; // New
-    private int currDashes;  //New
     private new Rigidbody2D rigidbody;
     private float horVel;
     private float vertVel;
@@ -18,7 +16,6 @@ public class playerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currDashes = maxDashes; //New
         rigidbody = GetComponent<Rigidbody2D>();
         playerMovement = GetComponent<Animator>();
         Aim = GameObject.FindGameObjectWithTag("aim");
