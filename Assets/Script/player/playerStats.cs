@@ -4,15 +4,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class gameController : MonoBehaviour
+public class playerStats : MonoBehaviour
 {
-    public static gameController instance;
+    public static playerStats instance;
     //static stats
+    private static int maxDashes = 2; // New
     private static int maxHealth = 6;
     private static float moveSpeed = 10f;
     private static float fireRate = 0.6f;
     //variable stats
+    private static int currDashes = maxDashes; // New
     private static int health = 6;
+    public static int CurrDashes { get => currDashes; set => currDashes = value; } // New
+    public static int MaxDashes { get => maxDashes; set => maxDashes = value; } // New
     public static int Health { get => health; set => health = value; }
     public static int MaxHealth { get => maxHealth; set => maxHealth = value; }
     public static float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }

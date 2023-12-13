@@ -33,7 +33,7 @@ public class powerUps : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            gameController.maxHealthChange(maxHealthChange);
+            playerStats.maxHealthChange(maxHealthChange);
             Destroy(gameObject);
         }
     }
