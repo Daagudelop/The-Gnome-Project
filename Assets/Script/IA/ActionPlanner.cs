@@ -51,7 +51,7 @@ public class ActionPlanner : MonoBehaviour
         NavMesh.pathfindingIterationsPerFrame = PathfindingIterationsPerFrame;
     }
 
-    private void OnGUI()
+    /*private void OnGUI()
     {
         if (GUI.Button(new Rect(10, 10, 300, 30), "Run Circle Scenario"))
         {
@@ -68,7 +68,7 @@ public class ActionPlanner : MonoBehaviour
             DestroyAllAgents();
             Run1On1Scenario();
         }
-    }
+    }*/
 
     private void DestroyAllAgents()
     {

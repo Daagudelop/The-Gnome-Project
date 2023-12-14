@@ -35,7 +35,7 @@ public class playerController : MonoBehaviour
         vertVel = vertical * speed;
         rigidbody.velocity = new Vector3(horVel, vertVel, 0);
 
-        float aimVar = Aim.GetComponent<Weapon>().rotZ;
+        float aimVar = GetComponent<Weapon>().rotZ;
         if (aimVar >= -45f && aimVar < 45f)
         {
             if (horVel != 0 || vertVel != 0)
