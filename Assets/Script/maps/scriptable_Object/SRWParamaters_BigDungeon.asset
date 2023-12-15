@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3782e218157216d49b8016f13735e0b1, type: 3}
   m_Name: SRWParamaters_BigDungeon
   m_EditorClassIdentifier: 
-  iterations: 100
-  walkLength: 100
+  iterations: 80
+  walkLength: 80
   startRandomlyEachIteration: 1
