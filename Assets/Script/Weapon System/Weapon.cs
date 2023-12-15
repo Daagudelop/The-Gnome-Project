@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.Intrinsics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine.UIElements;
 
 public enum Weapons1
 {
@@ -23,7 +25,7 @@ public class Weapon : MonoBehaviour
     public Weapons1 currentWeapon = Weapons1.Melee;
 
     [Header("Current Weapon Stats")]
-    [SerializeField] int fireRate;
+    [SerializeField] float fireRate;
     [SerializeField] float rpm;
     [SerializeField] int damage;
     [SerializeField] bool BouncingAmmo =false;
@@ -37,20 +39,14 @@ public class Weapon : MonoBehaviour
 
     [SerializeField] float timeTillDespawn = 2;
     [SerializeField] Camera mainCamera;
-    [SerializeField] Bullet BulletPrefab;
+    [SerializeField] ParticleSystem MuzzlePrefab;
     //[SerializeField] Transform BulletPrefab;
     [SerializeField] Transform aim;
     [SerializeField] Transform player;
+    [SerializeField] Transform HandManager;
 
     public delegate void ShootDelegate();
     private ShootDelegate selectedWayToShoot;
-
-    private ObjectPool<Bullet> bulletPool;
-
-    private void Awake()
-    {
-        
-    }
 
     // Start is called before the first frame update
     private void Start()
@@ -65,8 +61,14 @@ public class Weapon : MonoBehaviour
     void Update()
     {
         teclas();
+    }
+
+    private void FixedUpdate()
+    {
         Aim();
+        //MuzzlePrefab.Play();
         selectedWayToShoot();
+        
     }
 
     //metodo provisional:
@@ -109,17 +111,25 @@ public class Weapon : MonoBehaviour
             facingDirection = player.transform.position - transform.position;
         }
         aim.position = transform.position + (Vector3)facingDirection.normalized;
-        rotZ = Mathf.Atan2(facingDirection.y, facingDirection.x) * Mathf.Rad2Deg;
+        //rotZ = Mathf.Atan2(facingDirection.y, facingDirection.x) * Mathf.Rad2Deg;
+        //Quaternion BulletDirection = Quaternion.Euler(-rotZ, 90, 0);
+        //HandManager.rotation = BulletDirection;
     }
     void ToShoot()
     {
         //  Si click izq 
         if (Input.GetMouseButton(0) && gunLoaded)
         {
+
             gunLoaded = false;
             float angle = Mathf.Atan2(facingDirection.y, facingDirection.x) * Mathf.Rad2Deg;
             Quaternion BulletDirection = Quaternion.Euler(-angle, 90, 0);
-            Instantiate(BulletPrefab, aim.position, BulletDirection);
+            GameObject bullet = BulletObjectPooling.sharedInstanceOP.RequestBullet();
+            bullet.transform.position = aim.transform.position;
+            bullet.transform.rotation = BulletDirection;
+            CameraShake.sharedInstanceCS.ShakeCamera();
+            MuzzlePrefab.Play();
+            //Instantiate(BulletPrefab, aim.position, BulletDirection);
             StartCoroutine(ReloadGun());
         }
     }
@@ -135,8 +145,15 @@ public class Weapon : MonoBehaviour
             {
                 angle += 15f;
                 Quaternion BulletDirection = Quaternion.Euler(-angle, 90, 0);
-                Instantiate(BulletPrefab, transform.position, BulletDirection);
+                GameObject bullet = BulletObjectPooling.sharedInstanceOP.RequestBullet();
+                bullet.transform.position = aim.transform.position;
+                bullet.transform.rotation = BulletDirection;
+
+                //Instantiate(BulletPrefab, transform.position, BulletDirection);
             }
+            CameraShake.sharedInstanceCS.ShakeCamera();
+
+            MuzzlePrefab.Play();
             StartCoroutine(ReloadGun());
         }
     }
@@ -146,6 +163,7 @@ public class Weapon : MonoBehaviour
     {
         if (newWeapon == Weapons1.Pistol)
         {
+            CameraShake.sharedInstanceCS.shakeIntensity = 1;
             fireRate = 22;
             damage = 5;
                 selectedWayToShoot = ToShoot;
@@ -153,23 +171,25 @@ public class Weapon : MonoBehaviour
         else if (newWeapon == Weapons1.Shotgun)
         {
             fireRate = 30;
-            damage = 15;
-            
-            
-                selectedWayToShoot = ShotgunShoot;  
+            damage = 20;
+            CameraShake.sharedInstanceCS.shakeIntensity = 1.6f;
+            CameraShake.sharedInstanceCS.shakeTime = 0.4f;
+            selectedWayToShoot = ShotgunShoot;  
             
         }
         else if (newWeapon == Weapons1.Uzi)
         {
-            fireRate = 15;
+            CameraShake.sharedInstanceCS.shakeIntensity = 1;
+            fireRate = 5;
             damage = 5;
                 selectedWayToShoot = ToShoot;
         }
 
         else if (newWeapon == Weapons1.Rifle)
         {
-            fireRate = 20;
-            damage = 5;
+            CameraShake.sharedInstanceCS.shakeIntensity = 1.2f;
+            fireRate = 10;
+            damage = 10;
                 selectedWayToShoot = ToShoot;
         }
 
@@ -213,7 +233,9 @@ public class Weapon : MonoBehaviour
     
     IEnumerator ReloadGun()
     {
-        yield return new WaitForSeconds(fireRate/20);
+        rpm = fireRate / 20;
+        Debug.Log(rpm);
+        yield return new WaitForSeconds(rpm);
         
         gunLoaded = true;
     }
