@@ -59,35 +59,7 @@ public class corridorFirstDungeonGenerator : simpleRandomWalkDungeonGenerator
         return newCorridor;
     }
 
-    private List<Vector2Int> IncreaseCorridorsSizeByOne(List<Vector2Int> corridor)
-    {
-        List<Vector2Int> newCorridor = new List<Vector2Int>();
-        Vector2Int previousDirection = Vector2Int.zero;
-        for (int i = 1;i < corridor.Count; i++)
-        {
-            Vector2Int directionFromCell = corridor[i] - corridor[i - 1];
-            if(previousDirection != Vector2Int.zero &&
-                directionFromCell != previousDirection)
-            {
-                //esquina
-                for(int x = -1; x < 2; x++)
-                {
-                    for (int y = -1; y < 2; y++)
-                    {
-                        newCorridor.Add(corridor[i-1]+ new Vector2Int(x,y));
-                    }
-                }
-                previousDirection = directionFromCell;
-            }
-            else
-            {
-                Vector2Int newCorridorTileOffSet = GetDirection90From(directionFromCell);
-                newCorridor.Add(corridor[i - 1]);
-                newCorridor.Add(corridor[i - 1] + newCorridorTileOffSet);
-            }
-        }
-        return newCorridor;
-    }
+    
 
     private Vector2Int GetDirection90From(Vector2Int direction)
     {

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 646242478611679193}
   - component: {fileID: 8380820952592004550}
   - component: {fileID: 2619828704892488668}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -76,11 +76,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -10099287
-  m_SortingLayer: 3
+  m_SortingLayerID: 1453382371
+  m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3bbc0e2069eebd8439cc15bf972a9725, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: f7c136d6c1d60994985ad66f46470c77, type: 3}
+  m_Color: {r: 0.9716981, g: 0.9716981, b: 0.9716981, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -126,9 +126,23 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   MuzzlePrefab: {fileID: 4287227904298740264}
   aim: {fileID: 4467297231266024258}
+  muzzleTransform: {fileID: 9013918355487230698}
+  muzzleTransformBackUp: {fileID: 9013918355487230698}
   weaponTransform: {fileID: 5630451820497846955}
   player: {fileID: 2920319163961108447}
-  weapon: {fileID: 5205961844504029621}
+  weapon: {fileID: 7639300885237412513}
+  AKPrefab: {fileID: 3295080935562580447, guid: 2f76ca699ec3bc14c913e4f6f5c24349, type: 3}
+  MeleePrefab: {fileID: 3295080935562580447, guid: 63fd4b7fb26a20a4cb0fb093eaa979ee, type: 3}
+  enemyMeleePrefab: {fileID: 3295080935562580447, guid: 28a20ac237b33454dab30c89f009fe4d, type: 3}
+  MeleePrefabVisual: {fileID: 3295080935562580447, guid: 546de59cf186a2144a9126d399ea5fb2, type: 3}
+  UziPrefab: {fileID: 5174978485876611816, guid: b053533f7a2f42d40a2537b7fbee613f, type: 3}
+  ShotgunPrefab: {fileID: 5803292806061268126, guid: aab887c905c43314ba94200403c67041, type: 3}
+  PistolPrefab: {fileID: 1559676337047778499, guid: c7fe359b5978bcf43932518568095097, type: 3}
+  GLPrefab: {fileID: 6708774039316110193, guid: 052ecf93a0052b54cb064a776d7418a8, type: 3}
+  WeaponToThrow: {fileID: 0}
+  enemyAnimator: {fileID: 0}
+  weaponAnimator: {fileID: 8755471079160321935}
+  aviableToTakeWeapon: 0
 --- !u!50 &646242478611679193
 Rigidbody2D:
   serializedVersion: 4
@@ -232,7 +246,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4467297231266024258}
   - component: {fileID: 5205961844504029621}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Aim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,7 +309,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -10099287
-  m_SortingLayer: 3
+  m_SortingLayer: 0
   m_SortingOrder: 5
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -319,7 +333,7 @@ GameObject:
   - component: {fileID: 5630451820497846955}
   - component: {fileID: 7639300885237412513}
   - component: {fileID: 8755471079160321935}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -379,8 +393,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2088708979
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9be19f4464e7a724685b2a54a10b3f2f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -425,7 +439,7 @@ GameObject:
   - component: {fileID: 7674078106072739103}
   - component: {fileID: 4287227904298740264}
   - component: {fileID: 7412570798127275407}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5267,8 +5281,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2088708979
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -5311,7 +5325,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9013918355487230698}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5327,7 +5341,7 @@ Transform:
   m_GameObject: {fileID: 7549783167280261330}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.1, y: -0.23, z: 0}
+  m_LocalPosition: {x: 5.69, y: -0.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

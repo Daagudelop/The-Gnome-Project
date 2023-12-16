@@ -16,7 +16,6 @@ TagManager:
   - GL
   - Uzi
   - Shotgun
-
   layers:
   - Default
   - TransparentFX
@@ -24,8 +23,8 @@ TagManager:
   - 
   - Water
   - UI
-  - Entity
-  - Player
+  - player
+  - enemy
   - 
   - 
   - 
@@ -51,27 +50,24 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
-    uniqueID: 1424146387
-    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 172496991
+    locked: 0
   - name: Middleground
-    uniqueID: 2837020829
+    uniqueID: 2558962207
     locked: 0
   - name: Foreground
-    uniqueID: 1550279789
-    locked: 0
-  - name: humo
-    uniqueID: 3516616403
+    uniqueID: 594082559
     locked: 0
   - name: Player
-    uniqueID: 4284868009
+    uniqueID: 1453382371
     locked: 0
   - name: Weapons
-    uniqueID: 4235259245
+    uniqueID: 2088708979
     locked: 0
   - name: Entity
-    uniqueID: 146706493
+    uniqueID: 2003773369
     locked: 0
