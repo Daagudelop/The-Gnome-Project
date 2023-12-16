@@ -9,8 +9,6 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         _gameOverPanel = GameObject.FindGameObjectWithTag("GameOver").GetComponent<GameOver>()._gameOverScreen;
-
-
     }
     public void NewGame()
     {
