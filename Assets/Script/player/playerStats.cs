@@ -29,14 +29,27 @@ public class playerStats : MonoBehaviour
     public static int FireRateAdd { get => fireRateAdd; set => fireRateAdd = value; } // New
     
     public TextMeshProUGUI healthText;
+    private static GameObject _gameOverPanel;
 
     // Start is called before the first frame update
     private void Awake()
     {
+        var _dontDestroyBetweenScenesPause = FindObjectsOfType<PauseMenu>();
+
+        if (_dontDestroyBetweenScenesPause.Length > 1)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject);
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         if (instance == null)
         {
             instance = this;
         }
+        _gameOverPanel = GameObject.FindGameObjectWithTag("GameOver").GetComponent<GameOver>()._gameOverScreen;
+    
     }
 
     // Update is called once per frame
@@ -55,6 +68,8 @@ public class playerStats : MonoBehaviour
 
         if (Health <= 0)
         {
+            Time.timeScale = 0;
+            _gameOverPanel.SetActive(true);
             KillPlayer();
         }
     }

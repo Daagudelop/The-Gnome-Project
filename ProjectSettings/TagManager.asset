@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - aim
+  - SFX
+  - Settings
+  - Music
+  - GameOver
+  - VideoPlayer
   layers:
   - Default
   - TransparentFX
