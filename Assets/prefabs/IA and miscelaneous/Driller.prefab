@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 736147150736730112}
   - component: {fileID: 624734161207789794}
   - component: {fileID: 7917058314180262660}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6860703006079107102}
   - component: {fileID: 6288335227468192984}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Aim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 8058664506470747151}
   - component: {fileID: 4333316572258006929}
   - component: {fileID: 8236505259866785559}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5089,7 +5089,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3211675885512479909}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5127,6 +5127,8 @@ GameObject:
   - component: {fileID: 1785051478783923809}
   - component: {fileID: 4903552859840607388}
   - component: {fileID: 4207400963285002577}
+  - component: {fileID: 3975139956227065433}
+  - component: {fileID: 1963474673344008478}
   m_Layer: 7
   m_Name: Driller
   m_TagString: Untagged
@@ -5239,12 +5241,12 @@ MonoBehaviour:
   PlayerWeapon: {fileID: 0}
   itsWeapon: {fileID: 4207400963285002577}
   Health: 20
-  damage: 20
-  fireRate: 20
+  damage: 1
+  fireRate: 60
   DamageReceive: 0
   isRanger: 0
   isCC: 1
-  thisEnemy: {fileID: 0}
+  thisEnemy: {fileID: 8952334086798068976}
   DrillerStats: {fileID: 0}
   target: {fileID: 0}
   agent: {fileID: 1173794663100771417}
@@ -5341,7 +5343,7 @@ MonoBehaviour:
   rotZ: 0
   timeTillDespawn: 2
   mainCamera: {fileID: 0}
-  MuzzlePrefab: {fileID: 0}
+  MuzzlePrefab: {fileID: 4333316572258006929}
   aim: {fileID: 6860703006079107102}
   muzzleTransform: {fileID: 3211675885512479909}
   muzzleTransformBackUp: {fileID: 3211675885512479909}
@@ -5360,3 +5362,40 @@ MonoBehaviour:
   enemyAnimator: {fileID: 0}
   weaponAnimator: {fileID: 7917058314180262660}
   aviableToTakeWeapon: 0
+  agent: {fileID: 1173794663100771417}
+--- !u!114 &3975139956227065433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8952334086798068976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff5cd4c37f1cb2a469bcdf0eff339046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMovement: {fileID: 1963474673344008478}
+  Aim: {fileID: 5172481639757207124}
+  isPlayer: 0
+--- !u!95 &1963474673344008478
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8952334086798068976}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0d9b6e44a8bb0484989482a4934f23a8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

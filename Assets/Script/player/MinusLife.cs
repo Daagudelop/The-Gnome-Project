@@ -7,6 +7,6 @@ public class MinusLife : MonoBehaviour
     [SerializeField] Weapon Player;
     private void OnParticleCollision(GameObject other)
     {
-        playerStats.Health -= 1;
+        playerStats.instance.DamagePlayer(1);
     }
 }

@@ -62,9 +62,11 @@ public class playerStats : MonoBehaviour
     }
 
     // Health related Methods
-    public static void DamagePlayer(int damage)
+    public void DamagePlayer(int damage)
     {
         health -= damage;
+
+        Debug.Log("recibi daño" + health);
 
         if (Health <= 0)
         {
@@ -75,7 +77,7 @@ public class playerStats : MonoBehaviour
     }
     private static void KillPlayer()
     {
-
+        Debug.Log("punched");
     }
     public static void HealPlayer(int healAmount)    // Collectable
     {

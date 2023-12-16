@@ -81,8 +81,9 @@ public class DrillerIA : MonoBehaviour
             {
                 if (agent.remainingDistance <= 4)
                 {
-                    //Debug.Log("punch");
-                    itsWeapon.Melee();
+                    //UnityEngine.Debug.Log("punch");
+                    //itsWeapon.Melee();
+
                 }
             }
     }

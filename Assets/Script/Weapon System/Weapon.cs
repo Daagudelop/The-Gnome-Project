@@ -33,7 +33,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] bool BouncingAmmo = false;
 
     bool gunLoaded = true;
-    Vector2 facingDirection;
+    public Vector2 facingDirection;
     //Vector3 mousePos;
     public float rotZ;
 
@@ -62,7 +62,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] Animator enemyAnimator;
 
     [SerializeField] Animator weaponAnimator;
-    [SerializeField] private bool aviableToTakeWeapon;
+    [SerializeField] bool aviableToTakeWeapon;
     [SerializeField] NavMeshAgent agent;
     //[SerializeField] Transform HandManager;
 
@@ -113,13 +113,13 @@ public class Weapon : MonoBehaviour
         }
         else if (!isPlayer)
         {
-            if (agent.remainingDistance > 13)
-            {
+            /*if (agent.remainingDistance > 13)
+            {*/
                 if (agent.remainingDistance <= 4)
                 {
                     selectedWayToShoot();
                 }
-            }
+            //}
         }
     }
 
@@ -300,6 +300,7 @@ public class Weapon : MonoBehaviour
         {
             if (gunLoaded)
             {
+                Debug.Log("nani");
                 gunLoaded = false;
                 weaponAnimator.SetBool(STATE_IS_SHOOTING, true);
                 float angle = Mathf.Atan2(facingDirection.y, facingDirection.x) * Mathf.Rad2Deg;
@@ -527,57 +528,60 @@ public class Weapon : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        ToDamageEnemy(collision);
+        if (isPlayer)
+        {
+            PickUpWeapon(collision);
+        }
     }
 
 
-    void ToDamageEnemy(Collider2D collision)
+    void PickUpWeapon(Collider2D collision)
     {
-        GameObject weaponOnFloor;
         if (collision.CompareTag("AK"))
         {
-            if (Input.GetKeyDown(KeyCode.E) && aviableToTakeWeapon)
+            if (aviableToTakeWeapon)
             {
+                Debug.Log("AK");
                 Rifle();
-                weaponOnFloor = collision.GetComponent<GameObject>();
-                Destroy(weaponOnFloor);
+                Destroy(collision.gameObject, 0.001f);
             }
         }
         else if (collision.CompareTag("Pistol"))
         {
-            if (Input.GetKeyDown(KeyCode.E) && aviableToTakeWeapon)
+            if (/*Input.GetKeyDown(KeyCode.E) &&*/ aviableToTakeWeapon)
             {
                 Pistol();
-                weaponOnFloor = collision.GetComponent<GameObject>();
-                Destroy(weaponOnFloor);
+
+                Destroy(collision.gameObject, 0.001f);
             }
         }
 
         else if (collision.CompareTag("GL"))
         {
-            if (Input.GetKeyDown(KeyCode.E) && aviableToTakeWeapon)
+            if (/*Input.GetKeyDown(KeyCode.E)*/ aviableToTakeWeapon)
             {
                 GranadeLauncher();
-                weaponOnFloor = collision.GetComponent<GameObject>();
-                Destroy(weaponOnFloor);
+
+                Destroy(collision.gameObject, 0.001f);
             }
         }
         else if (collision.CompareTag("Shotgun"))
         {
-            if (Input.GetKeyDown(KeyCode.E) && aviableToTakeWeapon)
+            if (/*Input.GetKeyDown(KeyCode.E) &&*/ aviableToTakeWeapon)
             {
                 Shotgun();
-                weaponOnFloor = collision.GetComponent<GameObject>();
-                Destroy(weaponOnFloor);
+
+                Destroy(collision.gameObject, 0.001f);
             }
         }
         else if (collision.CompareTag("Uzi"))
         {
-            if (Input.GetKeyDown(KeyCode.E) && aviableToTakeWeapon)
+            if (/*Input.GetKeyDown(KeyCode.E) && */aviableToTakeWeapon)
             {
                 Uzi();
-                weaponOnFloor = collision.GetComponent<GameObject>();
-                Destroy(weaponOnFloor);
+                
+                Destroy(collision.gameObject,0.001f);
+                
             }
         }
     }
