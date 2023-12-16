@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.Intrinsics;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Pool;
 using UnityEngine.UIElements;
 
@@ -61,6 +63,7 @@ public class Weapon : MonoBehaviour
 
     [SerializeField] Animator weaponAnimator;
     [SerializeField] private bool aviableToTakeWeapon;
+    [SerializeField] NavMeshAgent agent;
     //[SerializeField] Transform HandManager;
 
     public delegate void ShootDelegate();
@@ -107,6 +110,16 @@ public class Weapon : MonoBehaviour
             teclas();
             ThrowWeapon(WeaponToThrow);
             selectedWayToShoot();
+        }
+        else if (!isPlayer)
+        {
+            if (agent.remainingDistance > 13)
+            {
+                if (agent.remainingDistance <= 4)
+                {
+                    selectedWayToShoot();
+                }
+            }
         }
     }
 
@@ -466,6 +479,26 @@ public class Weapon : MonoBehaviour
             //Crea las instancias.
             this.currentWeapon = newWeapon;
         }
+        else
+        {
+            if (newWeapon == Weapons1.Melee)
+            {
+                distanciaDelArma = 0.35f;
+                alturaDeArma = -0.25f;
+                /*DistanciaMuzzle = new Vector3(-0.40f, alturaDeArma/2, 0);
+                acercarMuzzle = DistanciaMuzzle;
+                muzzleTransform.position = muzzleTransformBackUp.position + acercarMuzzle;*/
+                ShootingTime = 0.08f;
+                aviableToTakeWeapon = true;
+                allFalse();
+                weaponAnimator.SetBool(STATE_IS_MELEE, true);
+                CameraShake.sharedInstanceCS.shakeIntensity = 1.2f;
+                fireRate = 20;
+                damage = 3;
+                selectedWayToShoot = Punch;
+                //TODO: colocar la lógica del GameOver
+            }
+        }
     }
     public void Pistol()
     {
@@ -560,4 +593,6 @@ public class Weapon : MonoBehaviour
     {
         weaponAnimator.SetBool(STATE_IS_SHOOTING, false);
     }
+
+    
 }

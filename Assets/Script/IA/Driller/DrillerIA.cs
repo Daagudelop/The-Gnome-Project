@@ -1,5 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+//using System.Collections;
+//using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -44,6 +45,7 @@ public class DrillerIA : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        itsWeapon.Melee();
     }
     private void OnEnable()
     {
@@ -60,25 +62,35 @@ public class DrillerIA : MonoBehaviour
     }
     private void Update()
     {
+
         agent.SetDestination(target.position);
-        if(isRanger)
+        //Debug.Log(agent.remainingDistance);
+        if (agent.remainingDistance > 13)
         {
-            
+            agent.isStopped = true;
         }
-        else if (isCC)
+        else
         {
-            if (agent.remainingDistance <= 4)
+            agent.isStopped = false;
+        }
+        if (isRanger)
             {
-                Debug.Log("punch");
-                itsWeapon.Punch();
+            
             }
-        }
+            else if (isCC)
+            {
+                if (agent.remainingDistance <= 4)
+                {
+                    //Debug.Log("punch");
+                    itsWeapon.Melee();
+                }
+            }
     }
 
     private void OnParticleCollision(GameObject other)
     {
         Health -= PlayerWeapon.damage;
-        Debug.Log(Health);
+        //Debug.Log(Health);
         if (Health<=0)
         {
             //Debug.Log(Health);

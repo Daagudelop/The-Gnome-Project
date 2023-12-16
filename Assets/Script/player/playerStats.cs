@@ -16,7 +16,7 @@ public class playerStats : MonoBehaviour
     //variable stats
     private static int maxAmmoAdd = 0;
     private static int currDashes = maxDashes; // New
-    private static int health = 6;
+    [SerializeField]private static int health = 6;
 
     // Getters / setters
     public static int CurrDashes { get => currDashes; set => currDashes = value; } // New
