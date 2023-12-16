@@ -2,19 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-public enum Enemies
-{
-    CuerpoACuerpo,
-    Ranger,
-    Explosive,
-}
+
 public class DrillerIA : MonoBehaviour
 {
-    [SerializeField] Weapon enemyWeapon;
+    [SerializeField] Weapon PlayerWeapon;
+    [SerializeField] Weapon itsWeapon;
     [SerializeField] int Health = 20;
-    [SerializeField] int damage = 20;
-    [SerializeField] int fireRate = 20;
+    [SerializeField] int damage = 2;
+    [SerializeField] int fireRate = 30;
+    [SerializeField] int DamageReceive;
 
+    [SerializeField] bool isRanger;
+    [SerializeField] bool isCC;
+
+    [SerializeField]GameObject thisEnemy;
 
     [SerializeField] Stats DrillerStats;
 
@@ -24,8 +25,20 @@ public class DrillerIA : MonoBehaviour
 
     private void Awake()
     {
-        
+        thisEnemy = GetComponent<GameObject>();
+
+        /*if(isRanger)
+        {
+            agent.stoppingDistance = 6;
+        }
+        else if(isCC) 
+        {
+            agent.stoppingDistance = 2;
+            itsWeapon.Melee();
+        }*/
     }
+
+    
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -34,9 +47,11 @@ public class DrillerIA : MonoBehaviour
     }
     private void OnEnable()
     {
-        Health = 20;
-        damage = 20;
+        //Health = 20;
+        //damage = 20;
     }
+
+
 
     private void Disable()
     {
@@ -46,15 +61,27 @@ public class DrillerIA : MonoBehaviour
     private void Update()
     {
         agent.SetDestination(target.position);
+        if(isRanger)
+        {
+            
+        }
+        else if (isCC)
+        {
+            if (agent.remainingDistance <= 4)
+            {
+                Debug.Log("punch");
+                itsWeapon.Punch();
+            }
+        }
     }
 
     private void OnParticleCollision(GameObject other)
     {
-        Health--;
+        Health -= PlayerWeapon.damage;
         Debug.Log(Health);
         if (Health<=0)
         {
-            Debug.Log(Health);
+            //Debug.Log(Health);
             Disable();
         }
     }

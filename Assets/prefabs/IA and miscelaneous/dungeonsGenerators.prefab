@@ -101,7 +101,7 @@ MonoBehaviour:
   startPosition: {x: 0, y: 0}
   randomWalkParameters: {fileID: 11400000, guid: aeddd0b6dff061340b0cfa71d93caab3, type: 2}
   corridorLength: 55
-  corridorCount: 10
+  corridorCount: 2
   roomPercent: 0.896
 --- !u!1 &3049278829019294679
 GameObject:
