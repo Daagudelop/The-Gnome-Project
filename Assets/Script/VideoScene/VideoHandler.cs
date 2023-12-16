@@ -23,7 +23,7 @@ public class VideoHandler : MonoBehaviour
     }
     void EndReached(UnityEngine.Video.VideoPlayer vp)
     {
-        SceneManager.LoadScene("SampleScene"); //main gameplay scene (replace when finished)
+        SceneManager.LoadScene("IA proves"); //main gameplay scene (replace when finished)
         Time.timeScale = 1f;
     }
 }
