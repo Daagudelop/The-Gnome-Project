@@ -5,12 +5,18 @@ TagManager:
   serializedVersion: 2
   tags:
   - aim
+  - SFX
+  - Settings
+  - Music
+  - GameOver
+  - VideoPlayer
   - Weapon
   - AK
   - Pistol
   - GL
   - Uzi
   - Shotgun
+
   layers:
   - Default
   - TransparentFX
