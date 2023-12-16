@@ -133,6 +133,7 @@ MonoBehaviour:
   weapon: {fileID: 5544829647364065392}
   AKPrefab: {fileID: 3295080935562580447, guid: 2f76ca699ec3bc14c913e4f6f5c24349, type: 3}
   MeleePrefab: {fileID: 3295080935562580447, guid: 63fd4b7fb26a20a4cb0fb093eaa979ee, type: 3}
+  enemyMeleePrefab: {fileID: 0}
   MeleePrefabVisual: {fileID: 3295080935562580447, guid: 546de59cf186a2144a9126d399ea5fb2, type: 3}
   UziPrefab: {fileID: 5174978485876611816, guid: b053533f7a2f42d40a2537b7fbee613f, type: 3}
   ShotgunPrefab: {fileID: 5803292806061268126, guid: aab887c905c43314ba94200403c67041, type: 3}
