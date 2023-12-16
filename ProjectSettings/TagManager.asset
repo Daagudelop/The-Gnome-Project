@@ -10,6 +10,13 @@ TagManager:
   - Music
   - GameOver
   - VideoPlayer
+  - Weapon
+  - AK
+  - Pistol
+  - GL
+  - Uzi
+  - Shotgun
+
   layers:
   - Default
   - TransparentFX
@@ -18,7 +25,7 @@ TagManager:
   - Water
   - UI
   - Entity
-  - 
+  - Player
   - 
   - 
   - 
@@ -55,4 +62,16 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 1550279789
+    locked: 0
+  - name: humo
+    uniqueID: 3516616403
+    locked: 0
+  - name: Player
+    uniqueID: 4284868009
+    locked: 0
+  - name: Weapons
+    uniqueID: 4235259245
+    locked: 0
+  - name: Entity
+    uniqueID: 146706493
     locked: 0
